@@ -10,6 +10,9 @@ import parse from "html-react-parser";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { TextLink } from "@/components/TextLink/TextLink";
+
+export const revalidate = 360;
 
 export default function Map() {
   const pathname = usePathname();
@@ -27,6 +30,9 @@ export default function Map() {
     country_flag_image: {
       url: string;
     };
+    country_region: string;
+    country_population: string;
+    population_year: string;
   }
   const [content, setContent] = useState<content>({
     id: "",
@@ -35,6 +41,9 @@ export default function Map() {
     country_flag_image: {
       url: "",
     },
+    country_region: "",
+    country_population: "",
+    population_year: "",
   });
 
   useEffect(() => {
@@ -65,18 +74,54 @@ export default function Map() {
             <h1 className={clsx(s.loading_text)}>読み込み中</h1>
           </div>
         ) : (
-          <div className={clsx(s.content_wrapper)}>
-            <Image
-              src={content.country_flag_image.url}
-              alt="flag"
-              height={560}
-              width={560}
-              sizes="100vw"
-              className={clsx(s.flag_image, w.borderRadiusMd)}
-              priority={false}
-            />
-            <h1 className={clsx(s.country_name)}>{content.country_name_jp}</h1>
-            {parse(content.country_body)}
+          <div className={clsx(s.content_wrapper, s.content_body)}>
+            <div>
+              <Image
+                src={content.country_flag_image.url}
+                alt="flag"
+                height={560}
+                width={560}
+                sizes="100vw"
+                className={clsx(s.flag_image, w.borderRadiusMd)}
+                priority={false}
+              />
+              <h1 className={clsx(s.country_name)}>
+                {content.country_name_jp}
+              </h1>
+            </div>
+            <div>
+              <h2>基本情報</h2>
+              <table className={clsx(s.table)}>
+                <tbody>
+                  <tr>
+                    <th>地域</th>
+                    <td>{content.country_region}</td>
+                  </tr>
+                  <tr>
+                    <th>人口</th>
+                    <td>
+                      {content.country_population}（{content.population_year}）
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>マップ</th>
+                    <td>
+                      <TextLink
+                        href={`https://www.google.com/maps/place/${content.country_name_jp}`}
+                        blank={true}
+                      >
+                        Google map
+                      </TextLink>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Wikipediaより引用</p>
+            </div>
+            <div>
+              <h2>説明</h2>
+              {parse(content.country_body)}
+            </div>
           </div>
         )}
       </div>
