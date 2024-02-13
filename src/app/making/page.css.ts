@@ -10,9 +10,9 @@ globalStyle(`${about_body} h1, h2`, {
 
   "@media": {
     [mediaQueryScreen("md")]: {
-        marginTop: "1.0rem"
-    }
-  }
+      marginTop: "1.0rem",
+    },
+  },
 });
 
 export const image_wrapper = style({
@@ -22,4 +22,5 @@ export const image_wrapper = style({
 
 export const image = style({
   width: "50%",
+  height: "auto",
 });
