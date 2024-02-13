@@ -31,7 +31,7 @@ export default function Making() {
             </TextLink>
             <p>
               このWebアプリのフロントエンドはNextjsを使用しておりバックエンド（データベース）はmicroCMSを使用しています。
-              CSSを書く際には vanilla-extractを使用している。
+              CSSを書く際には vanilla-extractを使用しています。
             </p>
           </div>
         </div>
