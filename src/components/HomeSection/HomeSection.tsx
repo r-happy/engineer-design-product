@@ -14,7 +14,6 @@ export const HomeSection = (props: HomeSection_Props) => {
     <div
       className={clsx(
         s.HomeSection_wrapper,
-        w.paddingSpaceSm,
         w.borderRadiusMd
       )}
     >
