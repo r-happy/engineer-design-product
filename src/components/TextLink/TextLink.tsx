@@ -12,7 +12,7 @@ type TextLink_Props = {
 
 export const TextLink = (props: TextLink_Props) => {
   return (
-    <Link href={props.href} target={props.blank ? "_blank" : ""}>
+    <Link href={props.href} target={props.blank ? "_blank" : ""} className={clsx(s.wrapper)}>
       <p className={clsx(s.link_style)}>{props.children}</p>
     </Link>
   );

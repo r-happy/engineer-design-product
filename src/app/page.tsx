@@ -49,6 +49,7 @@ export default function Home() {
             </p>
           </HomeSection>
           <LinkButton href="/collection" content="国の一覧を見る！" />
+          <LinkButton href="/making" content="制作過程を見る！" />
         </section>
       </div>
     </div>
